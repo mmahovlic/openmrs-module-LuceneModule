@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+
+	<!-- Module Properties -->
+	<id>lucenemodule</id>
+	<name>Lucene Module Module</name>
+	<version>1.0-SNAPSHOT</version>
+	<package>org.openmrs.module.lucenemodule</package>
+	<author>mmahovlic</author>
+	<description>
+		OpenMRS module for indexing and searching data using one of Lucene derived search engines (Apache Solr/Elasticsearch)
+	</description>
+	<updateURL>https://modules.openmrs.org/modules/download/lucenemodule/update.rdf</updateURL>
+	<require_version>1.9.7</require_version>
+	<!-- / Module Properties -->
+
+	
+	<!-- Module Activator -->
+	<activator>org.openmrs.module.lucenemodule.LuceneModuleActivator</activator>
+	
+	
+	<!-- Adds link to admin page -->
+	<extension>
+		<point>org.openmrs.admin.list</point>
+		<class>org.openmrs.module.lucenemodule.extension.html.AdminList</class>
+	</extension>
+	
+	<!-- Maps hibernate file's, if present -->
+	<mappingFiles>
+				
+		lucenemodel.hbm.xml
+				
+	</mappingFiles>
+
+	<!-- Internationalization -->
+	<!-- All message codes should start with lucenemodule. -->
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	<messages>
+		<lang>fr</lang>
+		<file>messages_fr.properties</file>
+	</messages>
+	<messages>
+		<lang>es</lang>
+		<file>messages_es.properties</file>
+	</messages>
+	<!-- /Internationalization -->
+
+</module>
+
