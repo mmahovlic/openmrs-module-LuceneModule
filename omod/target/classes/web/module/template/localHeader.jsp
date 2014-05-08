@@ -11,6 +11,27 @@
 				code="lucenemodule.manage" /></a>
 	</li>
 	
+	<li
+		<c:if test='<%= request.getRequestURI().contains("/upload") %>'>class="active"</c:if>>
+		<a
+		href="${pageContext.request.contextPath}/module/lucenemodule/textinput.form"><spring:message
+				code="Index text" /></a>
+	</li>
+	
+	<li
+		<c:if test='<%= request.getRequestURI().contains("/upload") %>'>class="active"</c:if>>
+		<a
+		href="${pageContext.request.contextPath}/module/lucenemodule/upload.form"><spring:message
+				code="Index uploaded file" /></a>
+	</li>
+	
+	<li
+		<c:if test='<%= request.getRequestURI().contains("/upload") %>'>class="active"</c:if>>
+		<a
+		href="${pageContext.request.contextPath}/module/lucenemodule/databaseinput.form"><spring:message
+				code="Index data from OpenMRS database" /></a>
+	</li>
+	
 	<!-- Add further links here -->
 </ul>
 <h2>
