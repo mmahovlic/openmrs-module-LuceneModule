@@ -3,6 +3,8 @@ package org.openmrs.module.lucenemodule.web.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.openmrs.api.context.Context;
+import org.openmrs.module.lucenemodule.web.controller.mappers.PatientInfoMapper;
+import org.openmrs.module.lucenemodule.web.controller.model.PatientInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,12 @@ public class UploadController {
 	@RequestMapping(value = "/module/lucenemodule/upload", method = RequestMethod.GET)
 	public void upload(ModelMap model) {
 		model.addAttribute("user", Context.getAuthenticatedUser());
+	}
+	
+	@RequestMapping( method=RequestMethod.POST)
+	public void savePatientInfo(HttpServletRequest request) throws Exception{
+		PatientInfo patientInfo = PatientInfoMapper.mapPatientFromRequest(request);
+		
 	}
 
 }
