@@ -70,6 +70,25 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-core-asl</artifactId>
+		</dependency>
+		<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+		</dependency>
+		
+		<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpcomponents-client</artifactId>
+		</dependency>
+			
+		<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpcomponents-core</artifactId>
+		</dependency>
+		
 		<!-- End OpenMRS core -->
 
 	</dependencies>

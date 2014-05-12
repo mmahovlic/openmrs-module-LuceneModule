@@ -27,10 +27,5 @@ public class UploadController {
 		model.addAttribute("user", Context.getAuthenticatedUser());
 	}
 	
-	@RequestMapping( method=RequestMethod.POST)
-	public void savePatientInfo(HttpServletRequest request) throws Exception{
-		PatientInfo patientInfo = PatientInfoMapper.mapPatientFromRequest(request);
-		
-	}
 
 }

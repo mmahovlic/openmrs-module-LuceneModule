@@ -2,6 +2,7 @@ package org.openmrs.module.lucenemodule.web.controller.model;
 
 public class PatientInfo {
 
+
 	private String name;
 	private String surname;
 	private String middleName;
@@ -61,4 +62,10 @@ public class PatientInfo {
 		this.additionalNotes = additionalNotes;
 	}
 
+	@Override
+	public String toString() {
+		return "PatientInfo [name=" + name + ", surname=" + surname
+				+ ", middleName=" + middleName + ", description=" + description
+				+ ", additionalNotes=" + additionalNotes + "]";
+	}
 }
