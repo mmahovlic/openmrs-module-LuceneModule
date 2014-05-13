@@ -7,6 +7,7 @@
 <center>
 <%
 // 	ObjectMapper mapper = new ObjectMapper();
+if(request.getAttribute("indexingResult")!=null){
 	IndexingResult result = (IndexingResult) request
 			.getAttribute("indexingResult");
 	if (result.getError() == "") {
@@ -14,6 +15,7 @@
 		out.print(result.getHttpResponse().getEntity().getContent().toString());
 	} else
 		out.print(result.getError());
+	}
 %>
 </center>
 <%@ include file="/WEB-INF/template/footer.jsp"%>

@@ -12,7 +12,7 @@
 	</li>
 	
 	<li
-		<c:if test='<%= request.getRequestURI().contains("/upload") %>'>class="active"</c:if>>
+		<c:if test='<%= request.getRequestURI().contains("/textinput") %>'>class="active"</c:if>>
 		<a
 		href="${pageContext.request.contextPath}/module/lucenemodule/textinput.form"><spring:message
 				code="Index text" /></a>
@@ -26,7 +26,7 @@
 	</li>
 	
 	<li
-		<c:if test='<%= request.getRequestURI().contains("/upload") %>'>class="active"</c:if>>
+		<c:if test='<%= request.getRequestURI().contains("/databaseinput") %>'>class="active"</c:if>>
 		<a
 		href="${pageContext.request.contextPath}/module/lucenemodule/databaseinput.form"><spring:message
 				code="Index data from OpenMRS database" /></a>

@@ -32,7 +32,7 @@ public class TextInputController {
 	@RequestMapping( method=RequestMethod.POST)
 	public ModelAndView savePatientInfo(HttpServletRequest request) throws Exception{
 		
-		ModelAndView mv = new ModelAndView("/module/lucenemodule/textinputresponse");
+		ModelAndView mv = new ModelAndView("/module/lucenemodule/textinput");
 		
 		PatientInfo patientInfo = PatientInfoMapper.mapPatientFromRequest(request);
 		IndexingResult indexingResult = HttpTextInputRequestSender.sendHttpPostRequest(patientInfo);

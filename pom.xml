@@ -6,7 +6,7 @@
 	<artifactId>lucenemodule</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Lucene Module Module</name>
+	<name>Lucene Module</name>
 	<description>OpenMRS module for indexing and searching data using one of Lucene derived search engines (Apache Solr/Elasticsearch)</description>
 	<url>https://wiki.openmrs.org/display/docs/Lucene+Module+Module+Module</url>
 	

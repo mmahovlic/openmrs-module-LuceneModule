@@ -19,23 +19,17 @@ public class HttpTextInputRequestSender {
 	
 	private static String ElasticSearchURL = "http://localhost:9200/openmrs/patient/";
 	private static ObjectMapper mapper = new ObjectMapper();
-	private static HttpClient client = HttpClientBuilder.create().build();
 	
 	public static IndexingResult sendHttpPostRequest(PatientInfo patientInfo){
 		
+		HttpClient client = HttpClientBuilder.create().build();
 		IndexingResult indexingResult = new IndexingResult();
 		HttpPost httpPost = new HttpPost(ElasticSearchURL);
 		httpPost.setHeader("Content-Type", "application/json");
 		String patientInfoJson = null;
 		try {
 			patientInfoJson = mapper.writeValueAsString(patientInfo);
-		} catch (JsonGenerationException e) {
-			indexingResult.setError(indexingResult.getError()+e.getMessage());
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			indexingResult.setError(indexingResult.getError()+e.getMessage());
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			indexingResult.setError(indexingResult.getError()+e.getMessage());
 			e.printStackTrace();
 		}
@@ -51,14 +45,10 @@ public class HttpTextInputRequestSender {
 		HttpResponse httpResponse = null;
 		try {
 			httpResponse = client.execute(httpPost);
-		} catch (ClientProtocolException e) {
-			indexingResult.setError(indexingResult.getError()+e.getMessage());
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			indexingResult.setError(indexingResult.getError()+e.getMessage());
 			e.printStackTrace();
 		}
-		
 		indexingResult.setHttpResponse(httpResponse);
 		return indexingResult;
 		
