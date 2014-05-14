@@ -2,25 +2,27 @@ package org.openmrs.module.lucenemodule.web.controller.model;
 
 public class PatientInfo {
 
-
+	private String id;
 	private String name;
 	private String surname;
 	private String middleName;
-	private String description;
+	private String illnessDescription;
 	private String additionalNotes;
 
 	public PatientInfo() {
 	}
 
-	public PatientInfo(String name, String surname, String middleName,
-			String description, String additionalNotes) {
+	public PatientInfo(String id, String name, String surname,
+			String middleName, String illnessDescription, String additionalNotes) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.middleName = middleName;
-		this.description = description;
+		this.illnessDescription = illnessDescription;
 		this.additionalNotes = additionalNotes;
 	}
+
 
 	public String getName() {
 		return name;
@@ -46,13 +48,6 @@ public class PatientInfo {
 		this.middleName = middleName;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	public String getAdditionalNotes() {
 		return additionalNotes;
@@ -62,10 +57,29 @@ public class PatientInfo {
 		this.additionalNotes = additionalNotes;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getIllnessDescription() {
+		return illnessDescription;
+	}
+
+	public void setIllnessDescription(String illnessDescription) {
+		this.illnessDescription = illnessDescription;
+	}
+
 	@Override
 	public String toString() {
-		return "PatientInfo [name=" + name + ", surname=" + surname
-				+ ", middleName=" + middleName + ", description=" + description
+		return "PatientInfo [id=" + id + ", name=" + name + ", surname="
+				+ surname + ", middleName=" + middleName
+				+ ", illnessDescription=" + illnessDescription
 				+ ", additionalNotes=" + additionalNotes + "]";
 	}
+	
+	
 }

@@ -7,6 +7,7 @@
 <center>
 
 <form method="post">
+	ID Pacijenta: <input name="id" type="text"> <br>
 	Ime: <input name="name" type="text"> <br>
 	Prezime: <input name="surname" type="text"><br>
 	Srednje ime: <input name="middlename" type="text"><br>

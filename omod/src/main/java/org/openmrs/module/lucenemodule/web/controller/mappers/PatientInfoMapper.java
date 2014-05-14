@@ -8,12 +8,13 @@ public class PatientInfoMapper {
 	
 	public static PatientInfo mapPatientFromRequest(HttpServletRequest httpServletRequest){
 		
+		String id = httpServletRequest.getParameter("id");
 		String name = httpServletRequest.getParameter("name");
 		String surname = httpServletRequest.getParameter("surname");
 		String middleName = httpServletRequest.getParameter("middlename");
 		String description = httpServletRequest.getParameter("description");
 		String additionalNotes = httpServletRequest.getParameter("additionalnotes");
-		PatientInfo patientInfo = new PatientInfo(name, surname, middleName, description, additionalNotes);
+		PatientInfo patientInfo = new PatientInfo(id, name, surname, middleName, description, additionalNotes);
 		
 		return patientInfo;
 		
