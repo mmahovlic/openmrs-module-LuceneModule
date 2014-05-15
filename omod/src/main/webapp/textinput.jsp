@@ -29,8 +29,6 @@
 				.getAttribute("indexingResult");
 		if (result.getError() == "") {
 			out.print("Success!\n");
-			out.print(result.getHttpResponse().getEntity().getContent()
-					.toString());
 		} else
 			out.print(result.getError());
 	}

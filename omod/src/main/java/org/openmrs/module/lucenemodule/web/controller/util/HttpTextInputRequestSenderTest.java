@@ -18,7 +18,7 @@ public class HttpTextInputRequestSenderTest {
 		String description = "Test2";
 		String additionalNotes ="Test3";
 		patientInfo = new PatientInfo(id, name, surname, middleName, description, additionalNotes);
-		HttpTextInputRequestSender.sendHttpPostRequest(patientInfo);
+		HttpRequestSenderUtility.indexPatient(patientInfo);
 	}
 
 }

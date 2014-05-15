@@ -6,7 +6,7 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.lucenemodule.web.controller.mappers.PatientInfoMapper;
 import org.openmrs.module.lucenemodule.web.controller.model.IndexingResult;
 import org.openmrs.module.lucenemodule.web.controller.model.PatientInfo;
-import org.openmrs.module.lucenemodule.web.controller.util.HttpTextInputRequestSender;
+import org.openmrs.module.lucenemodule.web.controller.util.HttpRequestSenderUtility;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +35,7 @@ public class TextInputController {
 		ModelAndView mv = new ModelAndView("/module/lucenemodule/textinput");
 		
 		PatientInfo patientInfo = PatientInfoMapper.mapPatientFromRequest(request);
-		IndexingResult indexingResult = HttpTextInputRequestSender.sendHttpPostRequest(patientInfo);
+		IndexingResult indexingResult = HttpRequestSenderUtility.indexPatient(patientInfo);
 		
 		mv.addObject("indexingResult", indexingResult);	
 		

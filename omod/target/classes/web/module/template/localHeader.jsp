@@ -15,21 +15,28 @@
 		<c:if test='<%= request.getRequestURI().contains("/textinput") %>'>class="active"</c:if>>
 		<a
 		href="${pageContext.request.contextPath}/module/lucenemodule/textinput.form"><spring:message
-				code="Index text" /></a>
+				code="Index/store patient information" /></a>
 	</li>
 	
 	<li
 		<c:if test='<%= request.getRequestURI().contains("/upload") %>'>class="active"</c:if>>
 		<a
 		href="${pageContext.request.contextPath}/module/lucenemodule/upload.form"><spring:message
-				code="Index uploaded file" /></a>
+				code="Index/store uploaded file" /></a>
 	</li>
 	
+<!-- 	<li -->
+<%-- 		<c:if test='<%= request.getRequestURI().contains("/databaseinput") %>'>class="active"</c:if>> --%>
+<!-- 		<a -->
+<%-- 		href="${pageContext.request.contextPath}/module/lucenemodule/databaseinput.form"><spring:message --%>
+<!-- 				code="Index data from OpenMRS database" /></a> -->
+<!-- 	</li> -->
+
 	<li
-		<c:if test='<%= request.getRequestURI().contains("/databaseinput") %>'>class="active"</c:if>>
+		<c:if test='<%= request.getRequestURI().contains("/patientsearch") %>'>class="active"</c:if>>
 		<a
-		href="${pageContext.request.contextPath}/module/lucenemodule/databaseinput.form"><spring:message
-				code="Index data from OpenMRS database" /></a>
+		href="${pageContext.request.contextPath}/module/lucenemodule/patientsearch.form"><spring:message
+				code="Search patient index" /></a>
 	</li>
 	
 	<!-- Add further links here -->
