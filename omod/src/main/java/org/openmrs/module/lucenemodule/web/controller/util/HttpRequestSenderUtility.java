@@ -69,14 +69,14 @@ public class HttpRequestSenderUtility {
 		HttpClient client = HttpClientBuilder.create().build();
 		SearchResult searchResult = new SearchResult();
 		
-		if((searchRequest.getId() == null && searchRequest.getQuery() == null) || (searchRequest.getId() != null && searchRequest.getQuery() != null)){
-			searchResult.setError("Morate zadati ili pacijentov ID, ili upit za pretragu teksta!");
+		if((searchRequest.getId() == "" && searchRequest.getQuery() == "") || (searchRequest.getId() != "" && searchRequest.getQuery() != "")){
+			searchResult.setError("Morate zadati ili pacijentov ID, ili upit za pretragu teksta! ID:"+searchRequest.getId()+", Query:" + searchRequest.getQuery());
 			return searchResult;
 		}
 		
 		HttpResponse httpResponse = null;
 		
-		if(searchRequest.getId()!=null){
+		if(searchRequest.getId()!=""){
 			StringBuilder paramsBuilder = new StringBuilder(ApacheSolrGetURL);
 			paramsBuilder.append("?q=id:");
 			paramsBuilder.append(searchRequest.getId());
@@ -114,7 +114,7 @@ public class HttpRequestSenderUtility {
 			return IOUtils.toString(httpResponse.getEntity().getContent(), "UTF-8");
 		} catch (Exception e) {
 			searchResult.setError("Failed to get JSON result from HttpResponse!");
+			return null;
 		}
-		return null;
 	}	
 }
