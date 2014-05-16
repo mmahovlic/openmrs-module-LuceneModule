@@ -3,6 +3,15 @@
 
 <%@ include file="template/localHeader.jsp"%>
 
-<p>Upload ${user.systemId}!</p>
+<form enctype="multipart/form-data" method="post">
+<p>
+Please specify a file:<br>
+<input type="file" name="datafile" size="40">
+</p>
+<div>
+<input type="submit" value="Upload">
+</div>
+</form>
+
 
 <%@ include file="/WEB-INF/template/footer.jsp"%>
