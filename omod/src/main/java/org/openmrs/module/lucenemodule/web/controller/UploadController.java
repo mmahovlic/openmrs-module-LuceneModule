@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -30,14 +32,13 @@ public class UploadController {
 	}
 	
 	@RequestMapping( method=RequestMethod.POST)
-	public ModelAndView savePatientInfo(HttpServletRequest request) throws Exception{
+	public ModelAndView savePatientInfo(MultipartHttpServletRequest multipartRequest) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("/module/lucenemodule/upload");
 		
-		PatientInfo patientInfo = PatientInfoMapper.mapPatientFromRequest(request);
-		IndexingResult indexingResult = HttpRequestSenderUtility.indexPatient(patientInfo);
+		IndexingResult indexingResult =HttpRequestSenderUtility.indexFile(multipartRequest.getFile("datafile"));
 		
-		mv.addObject("indexingResult", indexingResult);	
+		mv.addObject("uploadResult", indexingResult);	
 		
 		return mv;
 	}

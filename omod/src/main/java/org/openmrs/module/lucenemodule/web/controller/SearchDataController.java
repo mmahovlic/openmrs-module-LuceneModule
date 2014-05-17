@@ -33,7 +33,7 @@ public class SearchDataController {
 	}
 	
 	@RequestMapping( method=RequestMethod.POST)
-	public ModelAndView savePatientInfo(HttpServletRequest request) throws Exception{
+	public ModelAndView searchIndex(HttpServletRequest request) throws Exception{
 		
 		ModelAndView mv = new ModelAndView("/module/lucenemodule/patientsearch");
 		

@@ -89,6 +89,11 @@
 				<artifactId>httpcomponents-core</artifactId>
 		</dependency>
 		
+		<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpcomponents-mime</artifactId>
+		</dependency>
+		
 		<!-- End OpenMRS core -->
 
 	</dependencies>
