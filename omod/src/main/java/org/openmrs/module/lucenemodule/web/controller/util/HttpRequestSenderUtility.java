@@ -1,5 +1,6 @@
 package org.openmrs.module.lucenemodule.web.controller.util;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import org.apache.commons.io.IOUtils;
@@ -10,6 +11,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.common.SolrInputDocument;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.openmrs.module.lucenemodule.web.controller.model.IndexingResult;
 import org.openmrs.module.lucenemodule.web.controller.model.PatientInfo;
@@ -23,44 +28,52 @@ public class HttpRequestSenderUtility {
 	private static String ApacheSolrGetURL = "http://localhost:8983/solr/collection1/select";
 	private static String ApacheSolrPostFileURL ="http://localhost:8983/solr/update/csv?commit=true";
 	private static ObjectMapper mapper = new ObjectMapper();
+	static SolrServer server = new HttpSolrServer("http://localhost:8983/solr/");
 	
 	public static IndexingResult indexPatient(PatientInfo patientInfo){
 		
-		HttpClient client = HttpClientBuilder.create().build();
+//		HttpClient client = HttpClientBuilder.create().build();
 		IndexingResult indexingResult = new IndexingResult();
 		
 		if(patientInfo.getId()==null || patientInfo.getId().equals("")){
 			indexingResult.setError("ID Pacijenta mora biti specificiran!");
 			return indexingResult;
 		}
-		
-		HttpPost httpPost = new HttpPost(ApacheSolrPostJsonURL);
-		httpPost.setHeader("Content-Type", "application/json");
-		String patientInfoJson = null;
 		try {
-			patientInfoJson = mapper.writeValueAsString(patientInfo);
+			server.addBean(patientInfo);
+			server.commit();
 		} catch (Exception e) {
 			indexingResult.setError(indexingResult.getError()+e.getMessage());
 			e.printStackTrace();
 		}
-		patientInfoJson = "[" + patientInfoJson + "]";
-		StringEntity jsonBody = null;
-		try {
-			jsonBody = new StringEntity(patientInfoJson);
-		} catch (UnsupportedEncodingException e) {
-			indexingResult.setError(indexingResult.getError()+e.getMessage());
-			e.printStackTrace();
-		}
 		
-		httpPost.setEntity(jsonBody);
-		HttpResponse httpResponse = null;
-		try {
-			httpResponse = client.execute(httpPost);
-		} catch (Exception e) {
-			indexingResult.setError(indexingResult.getError()+e.getMessage());
-			e.printStackTrace();
-		}
-		indexingResult.setHttpResponse(httpResponse);
+//		HttpPost httpPost = new HttpPost(ApacheSolrPostJsonURL);
+//		httpPost.setHeader("Content-Type", "application/json");
+//		String patientInfoJson = null;
+//		try {
+//			patientInfoJson = mapper.writeValueAsString(patientInfo);
+//		} catch (Exception e) {
+//			indexingResult.setError(indexingResult.getError()+e.getMessage());
+//			e.printStackTrace();
+//		}
+//		patientInfoJson = "[" + patientInfoJson + "]";
+//		StringEntity jsonBody = null;
+//		try {
+//			jsonBody = new StringEntity(patientInfoJson);
+//		} catch (UnsupportedEncodingException e) {
+//			indexingResult.setError(indexingResult.getError()+e.getMessage());
+//			e.printStackTrace();
+//		}
+//		
+//		httpPost.setEntity(jsonBody);
+//		HttpResponse httpResponse = null;
+//		try {
+//			httpResponse = client.execute(httpPost);
+//		} catch (Exception e) {
+//			indexingResult.setError(indexingResult.getError()+e.getMessage());
+//			e.printStackTrace();
+//		}
+//		indexingResult.setHttpResponse();
 		return indexingResult;
 		
 	}

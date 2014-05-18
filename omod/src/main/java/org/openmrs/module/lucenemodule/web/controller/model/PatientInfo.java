@@ -1,12 +1,20 @@
 package org.openmrs.module.lucenemodule.web.controller.model;
 
-public class PatientInfo {
+import org.apache.solr.client.solrj.beans.Field;
 
+public class PatientInfo {
+	
+	@Field
 	private String id;
+	@Field
 	private String name;
+	@Field
 	private String surname;
+	@Field
 	private String middleName;
+	@Field
 	private String illnessDescription;
+	@Field
 	private String additionalNotes;
 
 	public PatientInfo() {

@@ -123,7 +123,24 @@
 				<artifactId>httpcomponents-mime</artifactId>
 				<version>4.3.3</version>
 			</dependency>
-						
+			
+			<dependency>
+ 			 <groupId>org.apache.solr</groupId>
+ 			 <artifactId>solr-solrj</artifactId>
+ 			 <version>4.1.0</version>
+			</dependency>
+			
+			<dependency>
+ 			 <groupId>org.slf4j</groupId>
+ 			 <artifactId>jcl-over-slf4j</artifactId>
+ 			 <version>1.6.0</version>
+			</dependency>
+			
+			<dependency>
+ 			 <groupId>org.slf4j</groupId>
+ 			 <artifactId>slf4j-api</artifactId>
+ 			 <version>1.6.0</version>
+			</dependency>
 			<!-- End OpenMRS core -->
 
 		</dependencies>

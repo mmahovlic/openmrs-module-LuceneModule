@@ -94,6 +94,21 @@
 				<artifactId>httpcomponents-mime</artifactId>
 		</dependency>
 		
+		<dependency>
+ 		<groupId>org.apache.solr</groupId>
+ 		 <artifactId>solr-solrj</artifactId>
+		</dependency>
+		
+<!-- 		<dependency> -->
+<!--  		<groupId>org.slf4j</groupId> -->
+<!--  		<artifactId>jcl-over-slf4j</artifactId> -->
+<!-- 		</dependency> -->
+			
+<!-- 		<dependency> -->
+<!--  		<groupId>org.slf4j</groupId> -->
+<!--  		<artifactId>slf4j-api</artifactId> -->
+<!-- 		</dependency> -->
+		
 		<!-- End OpenMRS core -->
 
 	</dependencies>
