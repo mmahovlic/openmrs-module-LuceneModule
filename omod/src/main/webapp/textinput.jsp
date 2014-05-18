@@ -15,6 +15,7 @@
 	Dodatne zabiljeske:<textarea name="additionalnotes" maxLength=1000 cols="25" rows="5">Dodajte zabiljeske...</textarea><br>
 	<input type="submit" value="Submit">
 </form>
+<hr>
 <%
 	if (request.getAttribute("indexingResult") != null) {
 		IndexingResult result = (IndexingResult) request

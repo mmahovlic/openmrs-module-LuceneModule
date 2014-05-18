@@ -3,10 +3,7 @@ package org.openmrs.module.lucenemodule.web.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.openmrs.api.context.Context;
-import org.openmrs.module.lucenemodule.web.controller.mappers.PatientInfoMapper;
 import org.openmrs.module.lucenemodule.web.controller.mappers.SearchMapper;
-import org.openmrs.module.lucenemodule.web.controller.model.IndexingResult;
-import org.openmrs.module.lucenemodule.web.controller.model.PatientInfo;
 import org.openmrs.module.lucenemodule.web.controller.model.SearchRequest;
 import org.openmrs.module.lucenemodule.web.controller.model.SearchResult;
 import org.openmrs.module.lucenemodule.web.controller.util.HttpRequestSenderUtility;

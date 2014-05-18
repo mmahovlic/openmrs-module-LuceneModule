@@ -1,16 +1,13 @@
 package org.openmrs.module.lucenemodule.web.controller.util;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.FileEntity;
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -18,11 +15,7 @@ import org.openmrs.module.lucenemodule.web.controller.model.IndexingResult;
 import org.openmrs.module.lucenemodule.web.controller.model.PatientInfo;
 import org.openmrs.module.lucenemodule.web.controller.model.SearchRequest;
 import org.openmrs.module.lucenemodule.web.controller.model.SearchResult;
-import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
-import org.apache.http.entity.*;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.FileBody;
 
 public class HttpRequestSenderUtility {
 	
@@ -138,28 +131,23 @@ public class HttpRequestSenderUtility {
 		if(multipartFile.getOriginalFilename().contains("csv")){
 			httpPost.setHeader("Content-Type", "text/csv");
 		}
+		else if(multipartFile.getOriginalFilename().contains("xml")) {
+			httpPost.setHeader("Content-Type", "text/xml");
+		}
 		else{
-		httpPost.setHeader("Content-Type", "text/xml");
+			indexingResult.setError("Datoteka mora biti XML ili CSV formata!");
+			return indexingResult;
 		}
 		httpPost.setHeader("charset", "utf-8");
-//		File file = null;
-//		try {
-//			file = multipartToFile(multipartFile);
-//		} catch (Exception e) {
-//			indexingResult.setError(indexingResult.getError()+e.getMessage());
-//			e.printStackTrace();
-//		}
-//		
-		MultipartEntityBuilder entity = MultipartEntityBuilder.create();
-		//entity.addPart("", new FileBody(file));
+		ByteArrayEntity byteArrayEntity = null;
 		try {
-			entity.addBinaryBody("file", multipartFile.getBytes());
-		} catch (IOException e) {
+			byteArrayEntity = new ByteArrayEntity(multipartFile.getBytes());
+		} catch (Exception e) {
 			indexingResult.setError(indexingResult.getError()+e.getMessage());
 			e.printStackTrace();
 		}
 		
-		httpPost.setEntity(entity.build());
+		httpPost.setEntity(byteArrayEntity);
 		HttpResponse httpResponse = null;
 		try {
 			httpResponse = client.execute(httpPost);
@@ -172,10 +160,4 @@ public class HttpRequestSenderUtility {
 		
 	}
 	
-    private static File multipartToFile(MultipartFile multipart) throws IllegalStateException, IOException {
-        File tmpFile = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + 
-                                multipart.getOriginalFilename());
-        multipart.transferTo(tmpFile);
-        return tmpFile;
-    }
 }
